@@ -9,10 +9,8 @@ void main() {
   group('TripService', () {
     test('getTrips', () async {
       var jsonString = await TripService.getTrips();
-      var tripsJson = json.encode(jsonString);
-      var trips = tripsFromJson(tripsJson);
+      var trips = tripsFromString(jsonString);
       DateTime now = DateTime.now();
-      print(trips);
       expect(trips[0].name, 'Trip 1');
       expect(trips[0].startDate.minute, now.minute);
     });
