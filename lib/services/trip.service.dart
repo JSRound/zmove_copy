@@ -1,7 +1,12 @@
-Future<List<Map<String, dynamic>>> getTrips() {
+import 'dart:convert';
+
+Future<String> getTrips() {
   return Future.delayed(Duration(seconds: 1), () {
-    return [
-      {"name": "Trip 1", "date": DateTime.now()..add(const Duration(minutes: 1)).toIso8601String()}
+    String time = DateTime.now().add(const Duration(minutes: 1)).toIso8601String();
+    Object tripsJson = [
+      {"name": "Trip 1", "date": time}
     ];
+    String tripsString = json.encode(tripsJson);
+    return tripsString;
   });
 }
